@@ -2,11 +2,11 @@
     background-color: rgb(28, 128, 168);
     grid-area: c;
   }
-  .item img{
+  .dialog img{
     height: 50px;
       width: 50px;
       border-radius: 30px;
   }
-  .item{
+  .dialog{
     color: white;
   }

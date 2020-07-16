@@ -1,7 +1,4 @@
-.content{
-    background-color: rgb(28, 128, 168);
-    grid-area: c;
-  }
-  .content img{
-    height: 400px;
-  }
+.content img{
+    width: 1100px;
+    height: 150px;
+}
