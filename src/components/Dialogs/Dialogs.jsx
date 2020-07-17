@@ -15,21 +15,8 @@ const Message = (props) => {
         <div className={s.message}>{props.message}</div>
     )
 }
-
-const messages = [
-    {message:'Hi friend!'},
-    {message:'How are you?'},
-    {message:'I will be glad to see yoo!'}
-]
-
 const Dialogs = (props) => {
-
-    const dialogsData = [
-        {id: 1, name: 'Dima'},
-        {id: 2, name: 'Bohdan'},
-        {id: 3, name: 'Tanya'},
-        {id: 4, name: 'Ighor'}
-    ];
+    const {dialogsData, messages} = props;
     const messagesElements =
         messages.map(post => <Message message={post.message}/>);
     return (
@@ -37,15 +24,9 @@ const Dialogs = (props) => {
             <div className={s.dialogsItems}>
                 {dialogsData.map(user =>
                     <DialogItem name={user.name} id={user.id}/>)}
-                {/*<DialogItem name='Bohdan' id='2'/>*/}
-                {/*<DialogItem name='Tanua' id='3'/>*/}
-                {/*<DialogItem name='Ighor' id='4'/>*/}
             </div>
             <div className={s.messages}>
                 {messagesElements}
-                {/*<Message message='Hi friend!'/>
-                <Message message='How are you?'/>
-                <Message message='I will be glad to see yoo!'/>*/}
             </div>
         </div>
     );
