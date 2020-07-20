@@ -10,19 +10,28 @@ import Post from "./Post/Post";
 ]*/
 
 const MyPosts = (props) => {
+    const someElement = React.createRef();
+    const addPost = () =>
+    {
+        props.addPost();
+    }
+    const onPostChange = (e) =>
+    {
+        props.onPostChange(e.target.value);
+    }
     return (
         <div className={s.postsBlock}>
             <div><h3>My posts</h3></div>
             <div>
                 <div>
-                    <textarea></textarea>
+                    <textarea ref={someElement} value={props.newPostState} onChange={onPostChange} placeholder='Enter text'/>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={addPost}>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>
-                {props.posts.map(post => <Post message={post.message} likes={post.likes}/>)}
+                {props.posts.map(post => <Post key={post.key} message={post.message} likes={post.likes}/>)}
             </div>
         </div>
     );
