@@ -1,4 +1,7 @@
-import {rerenderEntrieTree} from "../render";
+let rerenderEntrieTree = () =>
+{
+    console.log('State was changed')
+}
 
 const posts = [
     {message:'Hi, how are you', likes:'1', key:1},
@@ -61,5 +64,10 @@ export const addPost = (postMessage) =>
     state.profilePage.posts.push(newPost);
     state.profilePage.newPostState='';
     rerenderEntrieTree(state);
+}
+
+export const subscribe = (observer) =>
+{
+    rerenderEntrieTree = observer;
 }
 
