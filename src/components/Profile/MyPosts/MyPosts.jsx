@@ -1,30 +1,24 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../redux/actions/ProfileActions'
 
-/*const posts = [
-    {message:'Hi, how are you', likes:'1'},
-    {message:'It\'s my first post', likes:'21'},
-    {message:'Random message', likes:'21'},
-    {message:'Some another messaga', likes:'21'}
-]*/
 
 const MyPosts = (props) => {
     const someElement = React.createRef();
-    const addPost = () =>
-    {
-        props.addPost();
+    const addPost = () => {
+        props.dispatch(addPostActionCreator())
     }
-    const onPostChange = (e) =>
-    {
-        props.onPostChange(e.target.value);
+    const onPostChange = (e) => {
+        props.dispatch(updateNewPostTextActionCreator(e.target.value))
     }
     return (
         <div className={s.postsBlock}>
             <div><h3>My posts</h3></div>
             <div>
                 <div>
-                    <textarea ref={someElement} value={props.newPostState} onChange={onPostChange} placeholder='Enter text'/>
+                    <textarea ref={someElement} value={props.newPostState} onChange={onPostChange}
+                              placeholder='Enter text'/>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>
