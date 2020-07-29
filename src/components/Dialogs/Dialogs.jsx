@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
-import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from '../../redux/actions/DialogsActions';
 
 const DialogItem = (props) => {
     return (
@@ -19,15 +18,14 @@ const Message = (props) => {
 
 
 const Dialogs = (props) => {
-
     const updateNewMessageText = (e) =>
     {
-        props.dispatch(updateNewMessageBodyActionCreator(e.target.value))
+        props.updateNewMessageBody(e.target.value);
     }
 
     const sendMessage = () =>
     {
-        props.dispatch(sendMessageActionCreator())
+        props.sendMessage();
     }
 
     const {dialogs, messages} = props;

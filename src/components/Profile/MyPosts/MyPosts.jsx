@@ -1,16 +1,14 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../redux/actions/ProfileActions'
-
 
 const MyPosts = (props) => {
     const someElement = React.createRef();
     const addPost = () => {
-        props.dispatch(addPostActionCreator())
+        props.addPost()
     }
     const onPostChange = (e) => {
-        props.dispatch(updateNewPostTextActionCreator(e.target.value))
+        props.updateNewPostText(e.target.value)
     }
     return (
         <div className={s.postsBlock}>

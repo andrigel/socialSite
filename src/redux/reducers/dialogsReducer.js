@@ -13,19 +13,26 @@ dialogs: [
 newMessageBody: ''
 }
 
-const dialogsReducer = (state=initialState, action) => {
+const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-BODY':
-            state.newMessageBody = action.newText; break;
+        {
+             return {
+             ...state,
+             newMessageBody:action.newText
+             }
+        }
         case 'SEND-MESSAGE':
+        {
             const messageBody = {
                 message:state.newMessageBody
             };
-            state.messages.push(messageBody);
-            state.newMessageBody = ''; break;
-        default:
-            break;
+            return {
+            ...state,
+            messages:[...state.messages,messageBody],newMessageBody:''
+            }
+        }
+        default: return state;
     }
-    return state;
 }
 export default dialogsReducer;

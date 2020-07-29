@@ -1,12 +1,34 @@
-export const updateNewMessageBodyActionCreator = (text) => {
+export const follow = (userId) => {
     return{
-        type:'UPDATE-NEW-MESSAGE-BODY',
-        newText: text
+        type:'FOLLOW',
+        userId:userId
     }
 }
 
-export const sendMessageActionCreator = () => {
+export const unfollow = (userId) => {
     return {
-        type: 'SEND-MESSAGE'
+        type: 'UNFOLLOW',
+        userId:userId
+    }
+}
+
+export const setUsers = (users) => {
+    return{
+        type: 'SET_USERS',
+        users:users
+    }
+}
+
+export const setTotalUsersCount = (totalUsersCount)=> {
+    return{
+        type:'SET_TOTAL_USERS_COUNT',
+        totalUsersCount:totalUsersCount
+    }
+}
+
+export const setCurrentPage = (newPage)=> {
+    return {
+        type:'SET_CURRENT_PAGE',
+        newPage:newPage
     }
 }
