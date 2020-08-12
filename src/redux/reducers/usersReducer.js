@@ -2,9 +2,11 @@ import img from '../../img/userIcon.png'
 
 const initialState = {
     users: [],
-    pageSize:5,
-    currentPage:1,
-    totalUsersCount:0,
+    pageSize: 5,
+    currentPage: 1154,
+    totalUsersCount: 0,
+    isFetching: true,
+    followingInProgress: []
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -26,13 +28,22 @@ export const usersReducer = (state = initialState, action) => {
             }
         }
         case 'SET_USERS': {
-            return {...state, users:[...action.users]}
+            return {...state, users: [...action.users]}
         }
-        case 'SET_TOTAL_USERS_COUNT':{
-            return {...state,totalUsersCount: action.totalUsersCount}
+        case 'SET_TOTAL_USERS_COUNT': {
+            return {...state, totalUsersCount: action.totalUsersCount}
         }
-        case 'SET_CURRENT_PAGE':{
-            return{...state,currentPage: action.newPage}
+        case 'SET_CURRENT_PAGE': {
+            return {...state, currentPage: action.newPage}
+        }
+        case 'SET_IS_FETCHING': {
+            return {...state, isFetching: action.isFetching}
+        }
+        case 'SET_FOLLOWING_IN_PROGRESS':{
+            return {...state,
+                followingInProgress: action.isFetching ? [...state.followingInProgress, action.userId] :
+                    [...state.followingInProgress.filter(id => id != action.userId )]
+            }
         }
         default:
             return state;

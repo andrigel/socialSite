@@ -6,10 +6,14 @@ const initialState ={
     {message: 'Random message', likes: '14', key: 3},
     {message: 'Some another message', likes: '10', key: 4}
 ],
+    profile:null
 }
 
-export const profileReducer = (state=initialState, action) => {
+const profileReducer = (state=initialState, action) => {
     switch (action.type) {
+        case 'SET_USER_PROFILE':{
+            return {...state,profile:action.profile}
+        };
         case 'ADD-POST': {
             const newPost = {
                 message: state.newPostState,

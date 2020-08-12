@@ -2,49 +2,42 @@ import React from 'react';
 import {connect} from "react-redux";
 import Users from "./Users";
 import {bindActionCreators} from "redux";
-import * as usersActions from '../../redux/actions/usersActions'
-import * as axios from "axios";
+import * as userThunks from '../../redux/thunks/usersThunks'
 
-class UsersAPI extends React.Component
-{
-    componentDidMount()
-    {
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.selectedPage}&count=${this.props.pageSize}`)
-            .then(resp => {
-                this.props.setUsers(resp.data.items);
-                this.props.setTotalUsersCount(resp.data.totalCount)
-            });
+class UsersContainer extends React.Component {
+    componentDidMount() {
+        this.props.getUsers(this.props.currentPage,this.props.pageSize);
     }
 
-    onPageChanged = (pageNumber) =>
-    {
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(resp => {
-                this.props.setUsers(resp.data.items);
-                this.props.setTotalUsersCount(resp.data.totalCount)
-            });
-        this.props.setCurrentPage(pageNumber);
+    onPageChanged = (pageNumber) => {
+        this.props.onPageChanged(this.props.currentPage,this.props.pageSize,pageNumber)
     }
 
-    render(){
-        return(
-            <Users {...this.props} onPageChanged={this.onPageChanged}/>
-        )}
+    follow = (userId) => {
+        this.props.follow(userId)
+    }
+    unfollow = (userId) => {
+        this.props.unfollow(userId)
+    }
+
+    render() {
+        return (
+            <Users {...this.props} onPageChanged={this.onPageChanged} follow={this.follow} unfollow={this.unfollow}/>
+        )
+    }
 };
 
 const mapStateToProps = (state) => {
     return {
-        users:state.usersPage.users,
-        pageSize:state.usersPage.pageSize,
-        currentPage:state.usersPage.currentPage,
-        totalUsersCount:state.usersPage.totalUsersCount
+        users: state.usersPage.users,
+        isFetching: state.usersPage.isFetching,
+        pageSize: state.usersPage.pageSize,
+        currentPage: state.usersPage.currentPage,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators(usersActions,dispatch)
+    ...bindActionCreators(userThunks, dispatch)
 });
-
-const UsersContainer = connect(mapStateToProps,mapDispatchToProps)(UsersAPI);
-export default UsersContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);

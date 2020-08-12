@@ -32,3 +32,19 @@ export const setCurrentPage = (newPage)=> {
         newPage:newPage
     }
 }
+
+export const setIsFetching = (isFetching) => {
+    return{
+        type:'SET_IS_FETCHING',
+        isFetching:isFetching
+    }
+}
+
+export const setFollowingInProgress = (userId,isFetching) => {
+    return {
+        type:'SET_FOLLOWING_IN_PROGRESS',
+        isFetching,
+        userId
+    }
+}
+
