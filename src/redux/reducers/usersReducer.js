@@ -1,4 +1,4 @@
-import img from '../../img/userIcon.png'
+import img from '../../components/common/img/userIcon.png'
 
 const initialState = {
     users: [],

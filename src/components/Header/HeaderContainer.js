@@ -3,7 +3,6 @@ import Header from "./Header";
 import {connect} from "react-redux";
 import * as authThunks from '../../redux/thunks/authThunks'
 import {bindActionCreators} from "redux";
-import {getAuth} from "../../redux/thunks/authThunks";
 
 class HeaderContainer extends React.Component{
     componentDidMount() {

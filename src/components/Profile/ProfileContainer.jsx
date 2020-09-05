@@ -1,34 +1,38 @@
 import * as React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
+import {bindActionCreators, compose} from "redux";
 import {withRouter} from "react-router-dom";
 import * as profileThunks from "../../redux/thunks/profileThunks";
+import {withAuthRedirect} from "../../hocs/withAuthRedirect";
+import {withProfileRedirect} from "../../hocs/withProfileRedirect";
 
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
         this.props.getProfile(this.props.match.params.userId)
+        this.props.getStatus(this.props.match.params.userId)
     }
-
     render(){
         return(
-            <div>
-                <Profile {...this.props}/>
-            </div>
+            <Profile {...this.props}/>
         )
     }
 }
 const mapStateToProps = (state) => ({
     profile:state.profilePage.profile,
-    userId:state.auth.userId,
-    login:state.auth.login
+    status:state.profilePage.status,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     ...bindActionCreators(profileThunks,dispatch)
 })
 
-const WithUrlContainerComponent = withRouter(ProfileContainer)
+const ProfileContainerComponent = compose(
+    connect(mapStateToProps,mapDispatchToProps),
+    withRouter,
+    withAuthRedirect,
+    withProfileRedirect
+)(ProfileContainer)
 
-export default  connect(mapStateToProps,mapDispatchToProps)(WithUrlContainerComponent);
+export default ProfileContainerComponent;

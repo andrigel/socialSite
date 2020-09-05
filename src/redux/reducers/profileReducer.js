@@ -6,7 +6,8 @@ const initialState ={
     {message: 'Random message', likes: '14', key: 3},
     {message: 'Some another message', likes: '10', key: 4}
 ],
-    profile:null
+    profile:null,
+    status:null
 }
 
 const profileReducer = (state=initialState, action) => {
@@ -30,6 +31,9 @@ const profileReducer = (state=initialState, action) => {
             let stateCopy= {...state};
             stateCopy.newPostState = action.newText;
             return stateCopy;
+        }
+        case 'SET_STATUS': {
+            return {...state, status:action.status}
         }
         default: return state;
     }

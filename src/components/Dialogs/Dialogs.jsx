@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
 
 const DialogItem = (props) => {
     return (
@@ -18,20 +19,14 @@ const Message = (props) => {
 
 
 const Dialogs = (props) => {
-    const updateNewMessageText = (e) =>
-    {
-        props.updateNewMessageBody(e.target.value);
-    }
-
-    const sendMessage = () =>
-    {
+    const sendMessage = () => {
         props.sendMessage();
     }
 
     const {dialogs, messages} = props;
     const messagesElements =
         messages.map(post => <Message message={post.message}/>);
-    const{newMessageBody} = props;
+    const {newMessageBody} = props;
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -40,15 +35,25 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 {messagesElements}
-                <div>
-                    <textarea placeholder='Enter message...' onChange={updateNewMessageText} value={newMessageBody} />
-                </div>
-                <div>
-                    <button onClick={sendMessage}>Send</button>
-                </div>
+            <DialogsReduxForm/>
             </div>
         </div>
     );
 };
+
+const DialogsForm = (props) => {
+    return <form>
+        <div>
+            <Field placeholder={'Enter your message...'} component={'input'}/>
+        </div>
+        <div>
+            <button type={'submit'}>Send</button>
+        </div>
+    </form>
+}
+
+const DialogsReduxForm = reduxForm({
+    form: 'dialogs'
+})(DialogsForm)
 
 export default Dialogs;

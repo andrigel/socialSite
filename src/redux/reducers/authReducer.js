@@ -2,7 +2,8 @@ const initialState = {
     userId: null,
     email: null,
     login: null,
-    isAuth:false
+    isAuth:false,
+    isReady:false
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -12,6 +13,9 @@ const profileReducer = (state = initialState, action) => {
         }
         case 'SET_IS_AUTH': {
             return {...state, isAuth:action.isAuth}
+        }
+        case 'SET_IS_READY': {
+            return {...state, isReady:action.isReady}
         }
         default: return state;
     }

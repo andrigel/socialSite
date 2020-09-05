@@ -10,3 +10,10 @@ export const setIsAuth = (isAuth) => {
         isAuth: isAuth
     }
 }
+
+export const setIsReady = (isReady) => {
+    return {
+        type: 'SET_IS_READY',
+        isReady:isReady
+    }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Users.module.css'
-import img from "../../img/userIcon.png";
+import img from "../common/img/userIcon.png";
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
 
