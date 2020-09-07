@@ -1,12 +1,7 @@
-export const addPost = () => {
+export const addPost = (text) => {
     return {
-        type: 'ADD-POST'
-    }
-}
-export const updateNewPostText = (text) => {
-    return {
-        type: 'UPDATE-NEW-POST-TEXT',
-        newText: text
+        type: 'ADD-POST',
+        text:text
     }
 }
 export const setUserProfile = (profile) => {

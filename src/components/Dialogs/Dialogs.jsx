@@ -2,6 +2,8 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
+import {TextArea} from "../common/FormsControlls/FormsControls";
+import {maxLengthCreator, requiredField} from "../../utills/validators/validators";
 
 const DialogItem = (props) => {
     return (
@@ -19,14 +21,13 @@ const Message = (props) => {
 
 
 const Dialogs = (props) => {
-    const sendMessage = () => {
-        props.sendMessage();
+    const sendMessage = (values) => {
+        if(values.newMessageBody) props.sendMessage(values.newMessageBody);
     }
 
     const {dialogs, messages} = props;
     const messagesElements =
         messages.map(post => <Message message={post.message}/>);
-    const {newMessageBody} = props;
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -35,19 +36,23 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 {messagesElements}
-            <DialogsReduxForm/>
+            <DialogsReduxForm onSubmit={sendMessage}/>
             </div>
         </div>
     );
 };
 
+const maxLength50 = maxLengthCreator(50);
+
 const DialogsForm = (props) => {
-    return <form>
+    return <form onSubmit={props.handleSubmit}>
         <div>
-            <Field placeholder={'Enter your message...'} component={'input'}/>
+            <Field placeholder={'Enter your message...'} name={'newMessageBody'}
+                   validate={[requiredField,maxLength50]}
+                   component={TextArea}/>
         </div>
         <div>
-            <button type={'submit'}>Send</button>
+            <button>Send</button>
         </div>
     </form>
 }

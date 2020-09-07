@@ -1,24 +1,21 @@
 import React from 'react';
-import {sendMessage, updateNewMessageBody} from '../../redux/actions/dialogsActions';
+import * as DialogsActions from '../../redux/actions/dialogsActions';
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hocs/withAuthRedirect";
-import {compose} from "redux";
+import {bindActionCreators, compose} from "redux";
+import * as userThunks from "../../redux/thunks/usersThunks";
 
 const mapStateToProps = (state) => {
     return {
         dialogs:state.dialogsPage.dialogs,
-        messages:state.dialogsPage.messages,
-        newMessageBody:state.dialogsPage.newMessageBody,
+        messages:state.dialogsPage.messages
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateNewMessageBody: (body) =>{dispatch(updateNewMessageBody(body));},
-        sendMessage: ()=> {dispatch(sendMessage())}
-    }
-}
+const mapDispatchToProps = (dispatch) => ({
+    ...bindActionCreators(DialogsActions, dispatch)
+});
 
 const DialogsContainer = compose(
     connect(mapStateToProps,mapDispatchToProps),

@@ -14,3 +14,7 @@ export const getAuth = () => {
             });
     }
 }
+
+export const login = (email,password,rememberMe) => (dispatch) => {
+
+}

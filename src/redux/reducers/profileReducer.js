@@ -1,5 +1,4 @@
 const initialState ={
-    newPostState: '',
         posts: [
     {message: 'Hi, how are you', likes: '1', key: 1},
     {message: 'It\'s my first post', likes: '21', key: 2},
@@ -17,7 +16,7 @@ const profileReducer = (state=initialState, action) => {
         };
         case 'ADD-POST': {
             const newPost = {
-                message: state.newPostState,
+                message: action.text,
                 likes: 0,
                 key: 6
             };
@@ -25,11 +24,6 @@ const profileReducer = (state=initialState, action) => {
             stateCopy.posts = [...state.posts]
             stateCopy.posts.push(newPost);
             stateCopy.newPostState = '';
-            return stateCopy;
-        }
-        case 'UPDATE-NEW-POST-TEXT': {
-            let stateCopy= {...state};
-            stateCopy.newPostState = action.newText;
             return stateCopy;
         }
         case 'SET_STATUS': {

@@ -5,8 +5,9 @@ export const updateNewMessageBody = (text) => {
     }
 }
 
-export const sendMessage = () => {
+export const sendMessage = (message) => {
     return {
-        type: 'SEND-MESSAGE'
+        type: 'SEND-MESSAGE',
+        message:message
     }
 }
