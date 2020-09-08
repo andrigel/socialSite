@@ -1,7 +1,7 @@
 export const setUserData = (userId, email, login) => {
     return {
         type: 'SET_USER_DATA',
-        userData: {userId, email, login}
+        payload: {userId, email, login}
     }
 }
 export const setIsAuth = (isAuth) => {
