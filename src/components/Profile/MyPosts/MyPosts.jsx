@@ -5,7 +5,7 @@ import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, requiredField} from "../../../utills/validators/validators";
 import {TextArea} from "../../common/FormsControlls/FormsControls";
 
-const MyPosts = (props) => {
+const MyPosts = React.memo(props => {
     const addPost = (values) => {
         props.addPost(values.newPostText)
     }
@@ -19,7 +19,7 @@ const MyPosts = (props) => {
 
         </div>
     );
-};
+})
 
 const maxLength10 = maxLengthCreator(10);
 

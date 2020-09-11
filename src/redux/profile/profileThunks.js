@@ -29,7 +29,6 @@ export const updateStatus = (status) => {
                 if (resp.data.resultCode === 0) {
                     dispatch(profileActions.setStatus(status))
                 }
-                console.log(resp)
             });
     }
 }
