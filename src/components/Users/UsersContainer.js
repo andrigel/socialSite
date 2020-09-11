@@ -2,11 +2,17 @@ import React from 'react';
 import {connect} from "react-redux";
 import Users from "./Users";
 import {bindActionCreators} from "redux";
-import * as userThunks from '../../redux/thunks/usersThunks'
+import * as userThunks from '../../redux/users/usersThunks'
+import {
+    getCurrentPage,
+    getFollowingInProgress, getIsFetching,
+    getPageSize,
+    getTotalUsersCount, getUsers
+} from "../../redux/users/usersSelectors";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage,this.props.pageSize);
+        this.props.requestUsers(this.props.currentPage,this.props.pageSize);
     }
 
     onPageChanged = (pageNumber) => {
@@ -27,7 +33,7 @@ class UsersContainer extends React.Component {
     }
 };
 
-const mapStateToProps = (state) => {
+/*const mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         isFetching: state.usersPage.isFetching,
@@ -36,7 +42,19 @@ const mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         followingInProgress: state.usersPage.followingInProgress
     }
+}*/
+
+const mapStateToProps = (state) => {
+    return {
+        users: getUsers(state),
+        isFetching: getIsFetching(state),
+        pageSize: getPageSize(state),
+        currentPage: getCurrentPage(state),
+        totalUsersCount: getTotalUsersCount(state),
+        followingInProgress: getFollowingInProgress(state)
+    }
 }
+
 const mapDispatchToProps = (dispatch) => ({
     ...bindActionCreators(userThunks, dispatch)
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import * as profileActions from '../../../redux/actions/profileActions'
+import * as profileActions from '../../../redux/profile/profileActions'
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";

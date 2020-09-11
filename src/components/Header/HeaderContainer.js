@@ -1,14 +1,10 @@
 import React from "react";
 import Header from "./Header";
 import {connect} from "react-redux";
-import * as authThunks from '../../redux/thunks/authThunks'
+import * as authThunks from '../../redux/auth/authThunks'
 import {bindActionCreators} from "redux";
 
 class HeaderContainer extends React.Component{
-    componentDidMount() {
-        this.props.getAuth()
-    }
-
     render(){
         return(
             <Header {...this.props}/>

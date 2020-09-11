@@ -1,5 +1,5 @@
 import {profileAPI} from "../../api/API";
-import * as profileActions from '../actions/profileActions'
+import * as profileActions from './profileActions'
 
 export const getProfile = (userId) => {
     return (dispatch) => {

@@ -1,10 +1,11 @@
 import {usersAPI} from "../../api/API";
-import * as usersActions from "../actions/usersActions";
+import * as usersActions from "./usersActions";
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (page, pageSize) => {
     return (dispatch) => {
-        dispatch(usersActions.setIsFetching(true))
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
+        dispatch(usersActions.setIsFetching(true));
+        dispatch(usersActions.setCurrentPage(page));
+        usersAPI.getUsers(page, pageSize).then(data => {
             dispatch(usersActions.setUsers(data.items));
             dispatch(usersActions.setTotalUsersCount(data.totalCount));
             dispatch(usersActions.setIsFetching(false));

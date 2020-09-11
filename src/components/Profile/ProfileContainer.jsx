@@ -3,7 +3,7 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {bindActionCreators, compose} from "redux";
 import {withRouter} from "react-router-dom";
-import * as profileThunks from "../../redux/thunks/profileThunks";
+import * as profileThunks from "../../redux/profile/profileThunks";
 import {withAuthRedirect} from "../../hocs/withAuthRedirect";
 import {withProfileRedirect} from "../../hocs/withProfileRedirect";
 
