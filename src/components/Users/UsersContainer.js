@@ -16,7 +16,7 @@ class UsersContainer extends React.Component {
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.onPageChanged(this.props.currentPage,this.props.pageSize,pageNumber)
+        this.props.onPageChanged(pageNumber,this.props.pageSize)
     }
 
     follow = (userId) => {
@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
         isFetching: getIsFetching(state),
         pageSize: getPageSize(state),
         currentPage: getCurrentPage(state),
-        totalUsersCount: getTotalUsersCount(state),
+        totalItemsCount: getTotalUsersCount(state),
         followingInProgress: getFollowingInProgress(state)
     }
 }

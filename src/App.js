@@ -3,7 +3,6 @@ import './App.css';
 import Header from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
 import Profile from "./components/Profile/ProfileContainer";
-import Dialogs from "./components/Dialogs/DialogsContainer";
 import {Route, withRouter} from "react-router-dom";
 import Users from "./components/Users/UsersContainer";
 import LoginPage from './components/Login/LoginContainer'
@@ -11,6 +10,8 @@ import {bindActionCreators, compose} from "redux";
 import * as appThunks from "./redux/app/appThunks";
 import {connect} from "react-redux";
 import Preloader from "./components/common/Preloader/Preloader";
+import {withLazyLoading} from "./hocs/withLazyLoading";
+const Dialogs = withLazyLoading(React.lazy( () => import("./components/Dialogs/DialogsContainer")));
 
 class App extends Component {
     componentDidMount() {

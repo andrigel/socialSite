@@ -3,7 +3,7 @@ import img from '../../components/common/img/userIcon.png'
 const initialState = {
     users: [],
     pageSize: 5,
-    currentPage: 1154,
+    currentPage: 1,
     totalUsersCount: 0,
     isFetching: true,
     followingInProgress: []

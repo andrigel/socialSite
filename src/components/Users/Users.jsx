@@ -3,20 +3,11 @@ import s from './Users.module.css'
 import img from "../common/img/userIcon.png";
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import Paginator from "../common/Paginator/Paginator";
 
 const Users = (props) => {
-    const {currentPage} = props;
-    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
     return <div>
-            <div>
-                {pages.map(p => <span key={p} onClick={(e) => {
-                    props.onPageChanged(p)
-                }} className={p === currentPage ? s.selectedPage : ''}>{p}</span>)}
-            </div>
+            <Paginator {...props}/>
             {props.isFetching ?  <Preloader/>:
                 props.users.map(u => <div key={u.id}>
             <span>

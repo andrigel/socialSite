@@ -13,10 +13,10 @@ export const requestUsers = (page, pageSize) => {
     }
 }
 
-export const onPageChanged = (currentPage, pageSize, pageNumber) => {
+export const onPageChanged = (pageNumber, pageSize) => {
     return (dispatch) => {
         dispatch(usersActions.setIsFetching(true))
-        usersAPI.getUsers(currentPage,pageSize).then(data => {
+        usersAPI.getUsers(pageNumber,pageSize).then(data => {
             dispatch(usersActions.setUsers(data.items))
             dispatch(usersActions.setTotalUsersCount(data.totalCount))
             dispatch(usersActions.setIsFetching(false))

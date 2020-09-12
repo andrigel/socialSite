@@ -13,22 +13,14 @@ export const getProfile = (userId) => {
     }
 }
 
-export const getStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId)
-            .then(resp => {
-                dispatch(profileActions.setStatus(resp.data))
-            });
-    }
+export const getStatus = (userId) => async (dispatch) => {
+    const resp = await profileAPI.getStatus(userId);
+    dispatch(profileActions.setStatus(resp.data))
 }
 
-export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status)
-            .then(resp => {
-                if (resp.data.resultCode === 0) {
-                    dispatch(profileActions.setStatus(status))
-                }
-            });
+export const updateStatus = (status) => async (dispatch) => {
+    const resp = await profileAPI.updateStatus(status)
+    if (resp.data.resultCode === 0) {
+        dispatch(profileActions.setStatus(status))
     }
 }

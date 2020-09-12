@@ -1,0 +1,12 @@
+.page{
+    border-color: #ff3b4d;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 18px;
+    font-family: Tahoma;
+}
+.currentPage{
+    /*background: green;*/
+    font-weight: bold;
+    border-color: #750a05;
+}
