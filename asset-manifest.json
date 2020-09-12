@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/andrigel/socialSite/static/css/main.f522b953.chunk.css",
+    "main.js": "/andrigel/socialSite/static/js/main.e1b07918.chunk.js",
+    "main.js.map": "/andrigel/socialSite/static/js/main.e1b07918.chunk.js.map",
+    "runtime-main.js": "/andrigel/socialSite/static/js/runtime-main.fd219760.js",
+    "runtime-main.js.map": "/andrigel/socialSite/static/js/runtime-main.fd219760.js.map",
+    "static/js/2.7ac8b611.chunk.js": "/andrigel/socialSite/static/js/2.7ac8b611.chunk.js",
+    "static/js/2.7ac8b611.chunk.js.map": "/andrigel/socialSite/static/js/2.7ac8b611.chunk.js.map",
+    "static/css/3.35ce7fa4.chunk.css": "/andrigel/socialSite/static/css/3.35ce7fa4.chunk.css",
+    "static/js/3.38d955c7.chunk.js": "/andrigel/socialSite/static/js/3.38d955c7.chunk.js",
+    "static/js/3.38d955c7.chunk.js.map": "/andrigel/socialSite/static/js/3.38d955c7.chunk.js.map",
+    "index.html": "/andrigel/socialSite/index.html",
+    "precache-manifest.76921c261b623fd2ae95a34ce2bc7c5d.js": "/andrigel/socialSite/precache-manifest.76921c261b623fd2ae95a34ce2bc7c5d.js",
+    "service-worker.js": "/andrigel/socialSite/service-worker.js",
+    "static/css/3.35ce7fa4.chunk.css.map": "/andrigel/socialSite/static/css/3.35ce7fa4.chunk.css.map",
+    "static/css/main.f522b953.chunk.css.map": "/andrigel/socialSite/static/css/main.f522b953.chunk.css.map",
+    "static/js/2.7ac8b611.chunk.js.LICENSE.txt": "/andrigel/socialSite/static/js/2.7ac8b611.chunk.js.LICENSE.txt",
+    "static/media/loading.gif": "/andrigel/socialSite/static/media/loading.0c6f34a3.gif",
+    "static/media/userIcon.png": "/andrigel/socialSite/static/media/userIcon.bf20bb7c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fd219760.js",
+    "static/js/2.7ac8b611.chunk.js",
+    "static/css/main.f522b953.chunk.css",
+    "static/js/main.e1b07918.chunk.js"
+  ]
+}
